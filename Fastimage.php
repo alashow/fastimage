@@ -19,6 +19,12 @@ class FastImage {
 	public function __construct($uri = null) {
 		if ($uri) $this->load($uri);
 	}
+
+	public static function withStream( $stream ) {
+    	$instance = new self();
+    	$instance->handle = $stream;
+    	return $instance;
+    }
 	
 	public function load($uri) {
 		if ($this->handle) $this->close();

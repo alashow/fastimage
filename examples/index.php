@@ -2,18 +2,18 @@
 
 require '../Fastimage.php';
 
-$uri = 'http://pcdn.500px.net/8123858/7051e2440a869a3fec74406a3aa200618452c390/4.jpg';
-
-echo "\n\n";
+$uri = "https://dotjpg.co/JVX1.jpg";
 
 $time = microtime(true);
-$image = new FastImage($uri);
+$stream = fopen($uri, 'r');
+$image = FastImage::withStream($stream);
+
 list($width, $height) = $image->getSize();
-echo "FastImage: \n";
-echo "Width: ". $width . "px Height: ". $height . "px in " . (microtime(true)-$time) . " seconds \n";
+echo "FastImage: <br>";
+echo "Width: ". $width . "px<br>Height: ". $height . "px<br>in " . (microtime(true)-$time) . " seconds <br><br>";
 
 $time = microtime(true);
 list($width, $height) = getimagesize($uri);
-echo "getimagesize: \n";
-echo "Width: ". $width . "px Height: ". $height . "px in " . (microtime(true)-$time) . " seconds \n";
+echo "getimagesize: <br>";
+echo "Width: ". $width . "px<br>Height: ". $height . "px<br>in " . (microtime(true)-$time) . " seconds <br>";
 exit;
